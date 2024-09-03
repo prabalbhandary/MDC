@@ -76,7 +76,7 @@ const App = () => {
           }
         />
         <Route
-          path="/admin/doctorslist"
+          path="/admin/doctorlist"
           element={
             <ProtectedRoutes>
               <DoctorList />
