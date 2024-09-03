@@ -1,5 +1,3 @@
-/* Layout.css */
-
 .main {
   display: flex;
   flex-direction: column;
@@ -62,8 +60,8 @@
 }
 
 .active-menu-item a {
-  color: white; /* White text color for active menu item */
-  background-color: #005555; /* Background color for active item */
+  color: white;
+  background-color: #005555;
   padding: 5px;
   border-radius: 5px;
 }
@@ -93,7 +91,6 @@
   overflow-x: auto;
 }
 
-/* Offcanvas Styles */
 .offcanvas-header {
   border-bottom: 1px solid #dee2e6;
 }
@@ -112,8 +109,8 @@
 }
 
 .offcanvas .active-menu-item a {
-  color: white; /* White text color for active menu item */
-  background-color: #005555; /* Background color for active item */
+  color: white;
+  background-color: #005555;
   padding: 5px;
   border-radius: 5px;
 }
