@@ -222,19 +222,24 @@ router.post("/book-appointment", authMiddleware, async (req, res) => {
 });
 
 // Check Booking Availability
+// Check Booking Availability
 router.post("/check-booking-availability", authMiddleware, async (req, res) => {
   try {
-    const date = moment(req.body.date, "DD-MM-YYYY").toISOString();
-    const fromTime = moment(req.body.time, "HH:mm")
-      .subtract(1, "hours")
-      .toISOString();
-    const toTime = moment(req.body.time, "HH:mm").add(1, "hours").toISOString();
-    const doctorId = req.body.doctorId;
+    const { date, time, doctorId } = req.body;
+
+    // Parse and combine date and time
+    const appointmentDateTime = moment(`${date} ${time}`, "DD-MM-YYYY HH:mm").toDate();
+    const startTime = moment(appointmentDateTime).subtract(1, 'hour').toDate();
+    const endTime = moment(appointmentDateTime).add(1, 'hour').toDate();
+
+    // Query appointments for the specified doctor and time range
     const appointments = await Appointment.find({
       doctorId,
-      date,
-      time: { $gte: fromTime, $lte: toTime },
+      date: appointmentDateTime,
+      time: { $gte: startTime, $lt: endTime },
     });
+
+    // Check availability
     if (appointments.length > 0) {
       return res.status(200).send({
         message: "Appointments not available",
@@ -247,14 +252,16 @@ router.post("/check-booking-availability", authMiddleware, async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    console.error("Error checking appointment availability:", error);
     res.status(500).send({
-      message: "Error booking appointment",
+      message: "Error checking appointment availability",
       success: false,
       error,
     });
   }
 });
+
+
 
 // Get Appointment by userId
 router.get("/get-appointments-by-user-id", authMiddleware, async (req, res) => {
