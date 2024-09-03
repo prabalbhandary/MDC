@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Layout from '../../components/Layout/Layout'
 
 const UserProfile = () => {
-    const [user, setUser] = useState(null)
+    const [user] = useState(null)
   return (
     <Layout>
       <h1 className="page-title">User Profile</h1>

@@ -80,7 +80,7 @@ const DoctorProfile = () => {
 
   useEffect(() => {
     getDoctorData();
-  }, []);
+  }, [doctor]);
 
   return (
     <Layout>

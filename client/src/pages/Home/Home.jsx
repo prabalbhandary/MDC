@@ -35,7 +35,7 @@ const Home = () => {
   
   useEffect(() => {
     getData()
-  }, [])
+  }, [doctors])
   
   return (
     <Layout>

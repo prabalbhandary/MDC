@@ -56,6 +56,7 @@ const Layout = ({ children }) => {
           <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
             <i className="ri-hospital-line logo fs-2"></i>
             <h1 className="logo ms-2">MDC</h1>
+            <p className="role">{role}</p>
           </Navbar.Brand>
           <Navbar.Toggle 
             aria-controls="offcanvasNavbar"
