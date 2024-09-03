@@ -43,6 +43,12 @@ const Layout = ({ children }) => {
     window.location.href = "/login";
   };
 
+  const profileLink = user?.isAdmin
+    ? `/admin/profile/${user?._id}`
+    : user?.isDoctor
+    ? `/doctor/profile/${user?._id}`
+    : `/user/profile/${user?._id}`;
+
   return (
     <Container fluid className="main">
       <Navbar expand="md" className="header">
@@ -76,7 +82,7 @@ const Layout = ({ children }) => {
               <Badge count={unseenNotificationsCount} onClick={() => navigate("/notifications")} className="me-3">
                 <i className="ri-notification-3-line header-action-icon"></i>
               </Badge>
-              <Link to="#" className="d-flex gap-2 text-decoration-none align-items-center me-3">
+              <Link to={profileLink} className="d-flex gap-2 text-decoration-none align-items-center me-3">
                 <i className="ri-user-line fs-3"></i>
                 <p className="mb-0">{userName}</p>
               </Link>
@@ -88,7 +94,6 @@ const Layout = ({ children }) => {
         </Container>
       </Navbar>
 
-      {/* Offcanvas Menu */}
       <Offcanvas show={showOffcanvas} onHide={() => setShowOffcanvas(false)} placement="start">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
@@ -114,7 +119,7 @@ const Layout = ({ children }) => {
             <Badge count={unseenNotificationsCount} onClick={() => navigate("/notifications")} className="me-3">
               <i className="ri-notification-3-line header-action-icon"></i>
             </Badge>
-            <Link to="#" className="d-flex gap-2 text-decoration-none align-items-center me-3">
+            <Link to={profileLink} className="d-flex gap-2 text-decoration-none align-items-center me-3">
               <i className="ri-user-line fs-3"></i>
               <p className="mb-0">{userName}</p>
             </Link>
