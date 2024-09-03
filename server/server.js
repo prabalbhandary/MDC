@@ -11,7 +11,7 @@ const adminRoutes = require("./routes/adminRoute");
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: true }));
+app.use(cors({ origin: "https://mdc-server.onrender.com/", methods: "GET, POST" }));
 app.use(morgan("dev"));
 
 app.use("/api/v1/auth", userRoutes);
