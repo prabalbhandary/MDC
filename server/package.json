@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon server.js",
-    "client": "npm start --prefix ./client",
+    "client": "npm start --prefix ../client",
     "start": "concurrently \"npm run client\" \"npm run server\""
   },
   "author": "Prabal Bhandary",
