@@ -1,3 +1,3 @@
-const API = "https://mdc-server.onrender.com/"
+const API = "https://mdc-server.onrender.com/api/v1"
 
 export default API
